@@ -1,2 +1,2 @@
 # Flashcards_UI
-Project - Flashcard (React / Django / API)
+Project - Flashcard (React/ Python / Django / API)
