@@ -1,0 +1,27 @@
+.select__collections{
+    margin-top: 2rem;
+}
+
+.add__card-btn{
+    margin-top: 1rem;
+}
+
+.card__div{
+    margin-top: 2rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background-color: wheat;
+}
+
+.cards{
+    border: 3px solid #00887A;
+    height: 200px;
+    align-items: center;
+}
+
+.card__item{
+    height: 100%;
+    border: 3px solid purple;
+    align-self: center;
+}

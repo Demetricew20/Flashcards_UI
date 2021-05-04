@@ -4,7 +4,7 @@ import './App.css';
 import NavbarPage from './Components/Navbar/NavBar';
 import Landing from './Components/LandingPage/Landing';
 import Cards from './Components/CardsPage/Cards';
-import CardCollections from './Components/AccountPage/CardCollection';
+import CardCollections from './Components/CardCollection/CardCollection';
 
 class  App extends Component {
 
