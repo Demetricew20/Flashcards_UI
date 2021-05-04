@@ -6,6 +6,7 @@ import './Landing.css';
 function Landing() {
 
 
+
     return (
         <div className="main__content">
         <Container>
@@ -18,7 +19,7 @@ function Landing() {
             <Col><SiPython className="icons"/></Col>
           </Row>
           <Row>
-            <Col><Button className="landing__btn">Time To Study!</Button></Col>
+            <Col><a href="/cards"><Button className="landing__btn">Time To Study!</Button></a></Col>
           </Row>
         </Container>
       </div>

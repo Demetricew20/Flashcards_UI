@@ -21,7 +21,7 @@ render() {
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
     <Navbar.Collapse id="responsive-navbar-nav">
       <Nav className="mr-auto">
-        <Nav.Link href="/account">Account</Nav.Link>
+        <Nav.Link href="/home">Home</Nav.Link>
         <Nav.Link href="/cards">Cards</Nav.Link>
       </Nav>
       <Nav>

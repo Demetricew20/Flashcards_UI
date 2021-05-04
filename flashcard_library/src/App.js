@@ -22,9 +22,9 @@ class  App extends Component {
       <Route path='/home'>
         <Landing/>
       </Route>
-      <Route path='/account'>
+      {/* <Route path='/account'>
         <Account/>
-      </Route>
+      </Route> */}
       <Route path='/cards'>
         <Cards/>
       </Route>
