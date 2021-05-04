@@ -1,7 +1,9 @@
 import { Component } from 'react';
-import {Button} from 'react-bootstrap'
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
-import NavbarPage from './NavBar';
+import NavbarPage from './Components/Navbar/NavBar';
+import Account from './Components/AccountPage/Account';
+import Landing from './Components/LandingPage/Landing';
 
 class  App extends Component {
 
@@ -12,9 +14,18 @@ class  App extends Component {
 
   render(){
   return (
+    
     <div className="App">
-      <NavbarPage></NavbarPage>
-      <h1>Hello!</h1>
+      <Router>
+      <NavbarPage/>
+      <Route path='/home'>
+        <Landing/>
+      </Route>
+      <Route path='/account'>
+        <Account/>
+      </Route>
+      </Router>
+      
     </div>
   );
     }
