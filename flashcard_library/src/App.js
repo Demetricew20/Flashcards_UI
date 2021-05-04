@@ -2,9 +2,9 @@ import { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import NavbarPage from './Components/Navbar/NavBar';
-import Account from './Components/AccountPage/Account';
 import Landing from './Components/LandingPage/Landing';
 import Cards from './Components/CardsPage/Cards';
+import CardCollections from './Components/AccountPage/CardCollection';
 
 class  App extends Component {
 
@@ -22,9 +22,9 @@ class  App extends Component {
       <Route path='/home'>
         <Landing/>
       </Route>
-      {/* <Route path='/account'>
-        <Account/>
-      </Route> */}
+      <Route path='/card-collections'>
+        <CardCollections/>
+      </Route>
       <Route path='/cards'>
         <Cards/>
       </Route>

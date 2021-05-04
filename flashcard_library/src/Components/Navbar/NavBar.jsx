@@ -23,6 +23,7 @@ render() {
       <Nav className="mr-auto">
         <Nav.Link href="/home">Home</Nav.Link>
         <Nav.Link href="/cards">Cards</Nav.Link>
+        <Nav.Link href="/card-collections">Card Collections</Nav.Link>
       </Nav>
       <Nav>
         <Nav.Link><FaFacebookSquare/></Nav.Link>
