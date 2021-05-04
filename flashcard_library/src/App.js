@@ -4,6 +4,7 @@ import './App.css';
 import NavbarPage from './Components/Navbar/NavBar';
 import Account from './Components/AccountPage/Account';
 import Landing from './Components/LandingPage/Landing';
+import Cards from './Components/CardsPage/Cards';
 
 class  App extends Component {
 
@@ -23,6 +24,9 @@ class  App extends Component {
       </Route>
       <Route path='/account'>
         <Account/>
+      </Route>
+      <Route path='/cards'>
+        <Cards/>
       </Route>
       </Router>
       
