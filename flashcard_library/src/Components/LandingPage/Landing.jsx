@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button, Container, Row, Col} from 'react-bootstrap';
-import {SiPython, SiHtml5} from 'react-icons/si';
+import {SiPython, SiHtml5, SiReact} from 'react-icons/si';
 import './Landing.css';
 
 function Landing() {
@@ -15,8 +15,8 @@ function Landing() {
           </Row>
           <Row>
             <Col><SiPython className="icons"/></Col>
-            <Col><SiPython className="icons"/></Col>
-            <Col><SiPython className="icons"/></Col>
+            <Col><SiHtml5 className="icons"/></Col>
+            <Col><SiReact className="icons"/></Col>
           </Row>
           <Row>
             <Col><a href="/cards"><Button className="landing__btn">Time To Study!</Button></a></Col>

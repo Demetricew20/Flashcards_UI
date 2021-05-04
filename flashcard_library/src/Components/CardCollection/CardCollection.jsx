@@ -39,6 +39,7 @@ const item = array.map(num => (
                 </Row>
                 <Row>
                     <Col>
+                    {/* Needs Click function that flips card */}
                     <div className="card__div">
                         {item}
                     </div>
