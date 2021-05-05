@@ -18,13 +18,22 @@
     border-radius: 5%;
     height: 200px;
     width: 90%;
-    align-items: center;
+    text-align: center;
+    
 }
 
 .card__item{
+    display: flex;
     height: 100%;
     border: 3px solid purple;
     border-radius: 3%;
-    align-self: center;
     background-color: rgb(201, 196, 201);
+    color: black;
+    text-align: center;
+    justify-content: center;
+}
+
+.card__text{
+    align-self: center;
+    text-align: center;
 }
