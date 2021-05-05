@@ -5,8 +5,6 @@ import './Landing.css';
 
 function Landing() {
 
-
-
     return (
         <div className="main__content">
         <Container>

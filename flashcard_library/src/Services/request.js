@@ -37,7 +37,7 @@ class FlashcardServices {
             return http.put(`flashcards/${id}`, data);
             }
 
-        deleteCollection(id) {
+        deleteFlashcard(id) {
             return http.delete(`flashcards/${id}`);
             }
 
