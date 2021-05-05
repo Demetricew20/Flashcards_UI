@@ -1,17 +1,17 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import FlashcardServices from '../../Services/request'
 import { Container, Col, Row, Button, Dropdown } from 'react-bootstrap';
 import './CardCollection.css';
 
 function CardCollections() {
 
-let array = [1,2,3,4,5,6,7,8,9,10]
+const [collections, setCollections] = useState();
+const [card, setCard] = useState();
 
-const item = array.map(num => (
-    <div key={num} className="cards">
-        <div className="card__item">{num}</div>
-    </div>
-))
 
+useEffect(() => {
+    
+}, [input])
 
 
 
