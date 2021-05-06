@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import FlashcardServices from '../../Services/request';
-import {Dropdown, DropdownButton} from 'react-bootstrap';
-import DropdownItem from 'react-bootstrap/esm/DropdownItem'
 
 const EditCard = (props) => {
     const [card, setCard] = useState({

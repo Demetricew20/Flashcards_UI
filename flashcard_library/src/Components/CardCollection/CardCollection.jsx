@@ -57,6 +57,9 @@ const handleClick = (card) => {
 }
 
 
+let allCollectionsCards = []
+let selectedCollectionCards = []
+
     return (
         <div id="card-collections">
             {console.log(cards)}
@@ -93,12 +96,11 @@ const handleClick = (card) => {
                 <Row>
                     <Col>
                     {/* Needs Click function that flips card */}
-                    <div></div>
                     <div className="card__div">
                     {cards ? cards.map((card, i) => {
+                        {allCollectionsCards.push(card)}
                         if(selectedCollection === undefined){
-                            return(
-                            <>                       
+                            return(                      
                             <div key={i} className="cards">
                                 
                                 <div className="card__item">
@@ -111,7 +113,7 @@ const handleClick = (card) => {
                                 buttonStyle="card__edit-btn"
                                 buttonSize="sm"
                                 variant="none"
-                                action = {<MdEdit  />}
+                                action = {<MdEdit />}
                                 title = 'Edit FlashCard'
                                 content = {<EditCard currentCollections={collections} 
                                             card={card} 
@@ -138,10 +140,10 @@ const handleClick = (card) => {
                                 </div>
                                 
                             </div>
-                            </>
                         )
                         }
                         if(selectedCollection === card.collection){
+                            {selectedCollectionCards.push(card)}
                             return(
                             <div key={i}   className="cards">
                                 <div className="card__item">
@@ -180,6 +182,9 @@ const handleClick = (card) => {
                     }
                     </div>
                     </Col>
+                </Row>
+                <Row>{selectedCollection ? <Col><div><span>Total Cards: {selectedCollectionCards.length}</span></div></Col> : <Col><div><span>Total Cards: {allCollectionsCards.length}</span></div></Col> }
+                    
                 </Row>
                 <Row><Col><Button className={"flip__btn"} onClick={() => handleClickEventCard()}>Show Answers</Button></Col></Row>
 

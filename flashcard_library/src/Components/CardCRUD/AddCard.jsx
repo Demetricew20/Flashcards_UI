@@ -1,8 +1,6 @@
-import { FormGroup } from '@material-ui/core';
 import React, {useState, useEffect} from 'react';
 import { DropdownButton } from 'react-bootstrap';
 import { Dropdown } from 'react-bootstrap';
-import { FormControl, FormLabel } from 'react-bootstrap';
 import DropdownItem from 'react-bootstrap/esm/DropdownItem';
 import FlashcardLibrary from '../../Services/request';
 
