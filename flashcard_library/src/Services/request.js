@@ -2,7 +2,7 @@ import http from './axios'
 
 class FlashcardServices {
         getAllCollections() {
-        return http.get(" ");
+        return http.get("");
         }
 
         getCollection(id) {
@@ -10,7 +10,7 @@ class FlashcardServices {
         }
 
         createCollection(data) {
-        return http.post(" ", data);
+        return http.post("", data);
         }
 
         updateCollection(id, data) {

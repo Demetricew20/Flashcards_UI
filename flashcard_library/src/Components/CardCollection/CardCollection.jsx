@@ -8,6 +8,8 @@ import CardModal from '../Modals/CardModal';
 import AddCard from '../CardCRUD/AddCard';
 import DeleteCard from '../CardCRUD/DeleteCard';
 import EditCard from '../CardCRUD/EditCard';
+import AddCollection from '../CollectionCRUD/AddCollection';
+import DropdownItem from 'react-bootstrap/esm/DropdownItem';
 
 const  CardCollections = (props) => {
 
@@ -48,26 +50,27 @@ const handleClickEventCard = () => {
 }
 
 const collectionSelect = (e) => {
-    setSelectedCollection(parseInt(e))
+    if (e === null || e === undefined){
+        setSelectedCollection(e)
+    }
+    else{
+        setSelectedCollection(parseInt(e))
+    }
     console.log('Selected Collection >>>', e)
 }
 
-const handleClick = (card) => {
-    console.log('Clicked on >>', card)
-}
 
-
-let allCollectionsCards = []
-let selectedCollectionCards = []
+let allCollectionsCards = [];
+let selectedCollectionCards = [];
 
     return (
         <div id="card-collections">
-            {console.log(cards)}
             <Container>
                 <Row >
                     <Col>
                         <Dropdown className="select__collections" >
                             <DropdownButton title="Select Card Collection"  >
+                                <DropdownItem eventKey={undefined} onSelect={collectionSelect}>Show All</DropdownItem>
                             {collections ? collections.map(collection => (
                                 <Dropdown.Item key={collection.id} 
                                 eventKey={collection.id} 
@@ -92,6 +95,13 @@ let selectedCollectionCards = []
                             content = {<AddCard />}
                         />
                     </Col>
+                    <Col><CardModal
+                            buttonStyle="add__card-btn"
+                            action = 'Add Collection'
+                            title = 'Add A New Collection'
+                            content = {<AddCollection />}
+                        />
+                    </Col>
                 </Row>
                 <Row>
                     <Col>
@@ -99,7 +109,7 @@ let selectedCollectionCards = []
                     <div className="card__div">
                     {cards ? cards.map((card, i) => {
                         {allCollectionsCards.push(card)}
-                        if(selectedCollection === undefined){
+                        if(selectedCollection === undefined || selectedCollection === null){
                             return(                      
                             <div key={i} className="cards">
                                 
