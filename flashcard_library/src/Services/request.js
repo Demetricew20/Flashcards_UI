@@ -26,7 +26,7 @@ class FlashcardServices {
         }
 
         getFlashcards(collectionId, flashcardId) {
-        return http.get(`collection/${collectionId}/flashcard/${flashcardId}`);
+        return http.get(`collection/${collectionId}/flashcards/${flashcardId}`);
         }
 
         createFlashcard(data){
@@ -37,8 +37,8 @@ class FlashcardServices {
             return http.put(`flashcards/${id}`, data);
             }
 
-        deleteFlashcard(id) {
-            return http.delete(`flashcards/${id}`);
+        deleteFlashcard(id, collection) {
+            return http.delete(`collection/${collection}/flashcards/${id}`);
             }
 
 

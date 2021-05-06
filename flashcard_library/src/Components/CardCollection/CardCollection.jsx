@@ -3,7 +3,8 @@ import FlashcardServices from '../../Services/request';
 import { Container, Col, Row, Button, DropdownButton, Dropdown } from 'react-bootstrap';
 import './CardCollection.css';
 import CardModal from '../Modals/CardModal';
-import AddCard from './AddCard';
+import AddCard from '../CardCRUD/AddCard';
+import DeleteCard from '../CardCRUD/DeleteCard';
 
 const  CardCollections = (props) => {
 
@@ -105,7 +106,7 @@ const handleClick = (card) => {
                                 buttonStyle=""
                                 action = 'Delete'
                                 title = 'Delete FlashCard'
-                                content = ""
+                                content = {<DeleteCard card={card} />}
                                 />
                                 {/* <Button className="card__edit-btn" variant="outline-secondary" size="sm" >Edit</Button> */}
                                 {/* <Button size="sm" variant="outline-danger" >Delete</Button> */}

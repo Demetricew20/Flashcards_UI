@@ -26,12 +26,6 @@ const CardModal = (props) => {
                 </Modal.Header>
                 <Modal.Body>
                     {props.content}
-                    {/* <FormGroup>
-                        <FormLabel>Flashcard Question</FormLabel>
-                        <FormControl type='textarea' placeholder='Add Question' />
-                        <FormLabel>Flashcard Answer</FormLabel>
-                        <FormControl type='textarea' placeholder='Add Answer' />
-                    </FormGroup> */}
                 </Modal.Body>
                 <Modal.Footer>
                 <button onClick={hideModal}>Cancel</button>
