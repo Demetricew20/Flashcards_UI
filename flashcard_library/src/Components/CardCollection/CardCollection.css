@@ -36,6 +36,22 @@
     justify-content: center;
 }
 
+#Java-cards {
+    border: 3px solid blue;
+}
+
+#Python-cards {
+    border: 3px solid yellow;
+}
+
+#React-cards {
+    border: 4px solid rgb(15, 167, 218);
+}
+
+#HTML5-cards {
+    border: 3px solid orangered;
+}
+
 .card__text{
     z-index: 3;
     font-size: .75rem;

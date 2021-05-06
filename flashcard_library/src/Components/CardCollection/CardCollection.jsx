@@ -18,7 +18,10 @@ const [cards, setCards] = useState();
 const [flip, setFlip] = useState({
     clicked : false
 })
-const [selectedCollection, setSelectedCollection] = useState()
+const [selectedCollection, setSelectedCollection] = useState({
+    id: null,
+    name: ''
+})
 
 
 useEffect(() => {
@@ -50,12 +53,24 @@ const handleClickEventCard = () => {
 }
 
 const collectionSelect = (e) => {
-    if (e === null || e === undefined){
-        setSelectedCollection(e)
-    }
-    else{
-        setSelectedCollection(parseInt(e))
-    }
+    collections.forEach(collection => {
+        let tempId = parseInt(e)
+        if (tempId === collection.id){
+                setSelectedCollection({
+                    id: parseInt(e),
+                    name: collection.collection_name
+                })
+            }
+
+        if(e === null){
+            setSelectedCollection({
+                id: null,
+                name: collection.collection_name
+            })
+        }
+        }
+    )
+
     console.log('Selected Collection >>>', e)
 }
 
@@ -109,7 +124,7 @@ let selectedCollectionCards = [];
                     <div className="card__div">
                     {cards ? cards.map((card, i) => {
                         {allCollectionsCards.push(card)}
-                        if(selectedCollection === undefined || selectedCollection === null){
+                        if(selectedCollection.id === undefined || selectedCollection.id === null){
                             return(                      
                             <div key={i} className="cards">
                                 
@@ -152,13 +167,17 @@ let selectedCollectionCards = [];
                             </div>
                         )
                         }
-                        if(selectedCollection === card.collection){
+                        if(selectedCollection.id === card.collection){
                             {selectedCollectionCards.push(card)}
+                            console.log(selectedCollection.name)
                             return(
                             <div key={i}   className="cards">
-                                <div className="card__item">
-                                    <div className='card__text' >{flip.clicked ? card.card_answer : card.card_question}</div>
-                                    <div className="card__btn" >
+                                <div className="card__item" id={`${selectedCollection.name}-cards`} >
+                                    <div className='card__text' >{!flip.clicked ? card.card_question : card.card_answer}</div>
+                                    
+                                {!flip.clicked ? 
+                                
+                                <div className="card__btn" >
                                 <CardModal
                                 buttonStyle="card__edit-btn"
                                 buttonSize="sm"
@@ -181,6 +200,13 @@ let selectedCollectionCards = [];
                                 content = {<DeleteCard card={card} />}
                                 />
                                 </div>
+                            
+                                :
+
+                                <></>
+                            
+                                }
+
                                 </div>
                             </div>
                         )
