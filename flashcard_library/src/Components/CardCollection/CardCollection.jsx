@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import FlashcardServices from '../../Services/request';
 import { Container, Col, Row, Button, DropdownButton, Dropdown } from 'react-bootstrap';
 import './CardCollection.css';
-import AddCardModal from '../Modals/AddCardModal';
+import CardModal from '../Modals/CardModal';
 import AddCard from './AddCard';
 
 const  CardCollections = (props) => {
@@ -50,6 +50,10 @@ const collectionSelect = (e) => {
     console.log('Selected Collection >>>', e)
 }
 
+const handleClick = (card) => {
+    console.log('Clicked on >>', card)
+}
+
 
     return (
         <div id="card-collections">
@@ -71,12 +75,11 @@ const collectionSelect = (e) => {
                 </Row>
                 <Row>
                     {/* Modal Needs to be added */}
-                    <Col><AddCardModal
+                    <Col><CardModal
                             buttonStyle="add__card-btn"
                             action = 'Add Card'
                             title = 'Add A New Flashcard'
                             content = {<AddCard />}
-                            currentCollections = {collections}
                         />
                     </Col>
                 </Row>
@@ -87,10 +90,29 @@ const collectionSelect = (e) => {
                     {cards ? cards.map((card, i) => {
                         if(selectedCollection === undefined){
                             return(                        
-                            <div key={i}   className="cards">
+                            <div key={i} className="cards">
+                                
                                 <div className="card__item">
                                     <div className='card__text' >{flip.clicked ? card.card_answer : card.card_question}</div>
+                                <div className="card__btn" >
+                                <CardModal
+                                buttonStyle=""
+                                action = 'Edit'
+                                title = 'Edit FlashCard'
+                                content = ""
+                                />
+                                <CardModal
+                                buttonStyle=""
+                                action = 'Delete'
+                                title = 'Delete FlashCard'
+                                content = ""
+                                />
+                                {/* <Button className="card__edit-btn" variant="outline-secondary" size="sm" >Edit</Button> */}
+                                {/* <Button size="sm" variant="outline-danger" >Delete</Button> */}
                                 </div>
+                                    
+                                </div>
+                                
                             </div>
                         )
                         }
@@ -98,7 +120,7 @@ const collectionSelect = (e) => {
                             return(
                             <div key={i}   className="cards">
                                 <div className="card__item">
-                                    <div className='card__text' >{!flip.clicked ? card.card_answer : card.card_question}</div>
+                                    <div className='card__text' >{flip.clicked ? card.card_answer : card.card_question}</div>
                                 </div>
                             </div>
                         )

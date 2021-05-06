@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/button';
 import { FormGroup } from '@material-ui/core';
 import { FormControl, FormLabel } from 'react-bootstrap';
 
-const AddCardModal = (props) => {
+const CardModal = (props) => {
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -43,4 +43,4 @@ const AddCardModal = (props) => {
     )
 }
 
-export default AddCardModal;
+export default CardModal;

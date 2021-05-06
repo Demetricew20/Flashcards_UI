@@ -14,6 +14,7 @@
 }
 
 .cards{
+    z-index: 1;
     border: 3px solid #00887A;
     border-radius: 5%;
     height: 200px;
@@ -23,7 +24,8 @@
 }
 
 .card__item{
-    display: flex;
+    z-index: 2;
+    display: grid;
     height: 100%;
     border: 3px solid purple;
     border-radius: 3%;
@@ -34,6 +36,17 @@
 }
 
 .card__text{
+    margin-top: 1.5rem;
+    z-index: 3;
     align-self: center;
     text-align: center;
+}
+
+.card__btn{
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.card__edit-btn{
+    margin-right: 2.15rem;
 }

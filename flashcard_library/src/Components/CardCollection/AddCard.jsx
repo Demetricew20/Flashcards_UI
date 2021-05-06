@@ -7,7 +7,7 @@ import DropdownItem from 'react-bootstrap/esm/DropdownItem';
 import FlashcardLibrary from '../../Services/request';
 
 const  AddCard = () => {
-    const [collection, setCollection] = useState()
+    const [collection, setCollection] = useState();
     const [card, setCard] = useState(
         {
             collection: "",
