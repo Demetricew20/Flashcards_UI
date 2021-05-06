@@ -10,7 +10,7 @@
     margin-top: 2rem;
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 175px 175px;
 }
 
 .cards{
@@ -26,6 +26,7 @@
 .card__item{
     z-index: 2;
     display: grid;
+    grid-template-columns: 1 1fr;
     height: 100%;
     border: 3px solid purple;
     border-radius: 3%;
@@ -36,10 +37,16 @@
 }
 
 .card__text{
-    margin: 1.5rem 1px 0 1px;
     z-index: 3;
+    font-size: .75rem;
+    font-weight: bold;
     align-self: center;
     text-align: center;
+}
+
+.card__text > p {
+    padding: 0px 30px 0px 30px;
+    margin-bottom: .25rem;
 }
 
 .card__btn{

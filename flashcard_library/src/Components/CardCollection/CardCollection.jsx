@@ -114,7 +114,7 @@ let selectedCollectionCards = [];
                             <div key={i} className="cards">
                                 
                                 <div className="card__item">
-                                    <div className='card__text' >{!flip.clicked ? card.card_question : card.card_answer}</div>
+                                    <div className='card__text' ><p>{!flip.clicked ? card.card_question : card.card_answer}</p></div>
                                 
                                 {!flip.clicked ?
                                 
