@@ -33,8 +33,8 @@ class FlashcardServices {
             return http.post(`flashcards`, data)
         }
 
-        updateFlashcard(id, data) {
-            return http.put(`flashcards/${id}`, data);
+        updateFlashcard(id, collectionId, data) {
+            return http.put(`collection/${collectionId}/flashcards/${id}`, data);
             }
 
         deleteFlashcard(id, collection) {

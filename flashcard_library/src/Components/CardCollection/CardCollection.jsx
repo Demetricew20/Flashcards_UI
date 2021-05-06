@@ -5,6 +5,7 @@ import './CardCollection.css';
 import CardModal from '../Modals/CardModal';
 import AddCard from '../CardCRUD/AddCard';
 import DeleteCard from '../CardCRUD/DeleteCard';
+import EditCard from '../CardCRUD/EditCard';
 
 const  CardCollections = (props) => {
 
@@ -65,7 +66,12 @@ const handleClick = (card) => {
                         <Dropdown className="select__collections" >
                             <DropdownButton title="Select Card Collection"  >
                             {collections ? collections.map(collection => (
-                                <Dropdown.Item key={collection.id} eventKey={collection.id} onSelect={collectionSelect} >{collection.collection_name}</Dropdown.Item>
+                                <Dropdown.Item key={collection.id} 
+                                eventKey={collection.id} 
+                                nSelect={collectionSelect} 
+                                >
+                                {collection.collection_name}
+                                </Dropdown.Item>
                             ))
                             :
                             <></>
@@ -100,7 +106,12 @@ const handleClick = (card) => {
                                 buttonStyle=""
                                 action = 'Edit'
                                 title = 'Edit FlashCard'
-                                content = ""
+                                content = {<EditCard currentCollections={collections} 
+                                            card={card} 
+                                            collection={card.collection} 
+                                            card_question={card.card_question} 
+                                            card_answer={card.card_answer}
+                                            />}
                                 />
                                 <CardModal
                                 buttonStyle=""
