@@ -36,7 +36,7 @@
 }
 
 .card__text{
-    margin-top: 1.5rem;
+    margin: 1.5rem 1px 0 1px;
     z-index: 3;
     align-self: center;
     text-align: center;
@@ -48,5 +48,21 @@
 }
 
 .card__edit-btn{
-    margin-right: 2.15rem;
+    margin-right: 2.75rem;
+    color: #007BFF;
+    font-size: 1.55rem;
+    padding: 0;
+}
+.card__delete-btn{
+    color: red;
+    font-size: 1.25rem;
+    padding: 0;
+}
+
+svg{
+    stroke: black;
+    stroke-width: .75px;
+}
+.flip__btn{
+    margin-top: 2rem;
 }

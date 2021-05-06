@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import FlashcardServices from '../../Services/request';
 import { Container, Col, Row, Button, DropdownButton, Dropdown } from 'react-bootstrap';
+import {ImCross} from 'react-icons/im'
+import {MdEdit} from 'react-icons/md'
 import './CardCollection.css';
 import CardModal from '../Modals/CardModal';
 import AddCard from '../CardCRUD/AddCard';
@@ -103,8 +105,10 @@ const handleClick = (card) => {
                                     <div className='card__text' >{flip.clicked ? card.card_answer : card.card_question}</div>
                                 <div className="card__btn" >
                                 <CardModal
-                                buttonStyle=""
-                                action = 'Edit'
+                                buttonStyle="card__edit-btn"
+                                buttonSize="sm"
+                                variant="none"
+                                action = {<MdEdit  />}
                                 title = 'Edit FlashCard'
                                 content = {<EditCard currentCollections={collections} 
                                             card={card} 
@@ -114,8 +118,10 @@ const handleClick = (card) => {
                                             />}
                                 />
                                 <CardModal
-                                buttonStyle=""
-                                action = 'Delete'
+                                buttonStyle="card__delete-btn"
+                                buttonSize="sm"
+                                variant="none"
+                                action = {<ImCross />}
                                 title = 'Delete FlashCard'
                                 content = {<DeleteCard card={card} />}
                                 />
@@ -145,7 +151,7 @@ const handleClick = (card) => {
                     </div>
                     </Col>
                 </Row>
-                <Row><Button onClick={() => handleClickEventCard()}>Show Answers</Button></Row>
+                <Row><Col><Button className={"flip__btn"} onClick={() => handleClickEventCard()}>Show Answers</Button></Col></Row>
 
             </Container>
         </div>

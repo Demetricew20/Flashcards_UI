@@ -21,7 +21,7 @@ const DeleteCard = (props) => {
     return (
         <div>
             <p>Are you sure you want to delete this card?</p>
-            <Button className="delete__btn" onClick={() => deleteCard(props.card)}>Delete</Button>
+            <button className="delete__btn" onClick={() => deleteCard(props.card)}>Delete</button>
         </div>
     )
 }

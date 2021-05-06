@@ -19,7 +19,7 @@ const CardModal = (props) => {
 
     return (
             <>
-            <Button onClick={showModal} type='button' className={props.buttonStyle}>{props.action}</Button>
+            <Button size={props.buttonSize} onClick={showModal} variant={props.variant} type='button' className={props.buttonStyle}>{props.action}</Button>
             <Modal show={isOpen} onHide={hideModal}>
                 <Modal.Header>
                 <Modal.Title>{props.title}</Modal.Title>
