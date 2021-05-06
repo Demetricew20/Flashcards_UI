@@ -70,7 +70,7 @@ const handleClick = (card) => {
                             {collections ? collections.map(collection => (
                                 <Dropdown.Item key={collection.id} 
                                 eventKey={collection.id} 
-                                nSelect={collectionSelect} 
+                                onSelect={collectionSelect} 
                                 >
                                 {collection.collection_name}
                                 </Dropdown.Item>
@@ -102,7 +102,10 @@ const handleClick = (card) => {
                             <div key={i} className="cards">
                                 
                                 <div className="card__item">
-                                    <div className='card__text' >{flip.clicked ? card.card_answer : card.card_question}</div>
+                                    <div className='card__text' >{!flip.clicked ? card.card_question : card.card_answer}</div>
+                                
+                                {!flip.clicked ?
+                                
                                 <div className="card__btn" >
                                 <CardModal
                                 buttonStyle="card__edit-btn"
@@ -125,9 +128,12 @@ const handleClick = (card) => {
                                 title = 'Delete FlashCard'
                                 content = {<DeleteCard card={card} />}
                                 />
-                                {/* <Button className="card__edit-btn" variant="outline-secondary" size="sm" >Edit</Button> */}
-                                {/* <Button size="sm" variant="outline-danger" >Delete</Button> */}
                                 </div>
+                            
+                                :
+                                <></>
+                                
+                                }
                                     
                                 </div>
                                 
@@ -139,6 +145,29 @@ const handleClick = (card) => {
                             <div key={i}   className="cards">
                                 <div className="card__item">
                                     <div className='card__text' >{flip.clicked ? card.card_answer : card.card_question}</div>
+                                    <div className="card__btn" >
+                                <CardModal
+                                buttonStyle="card__edit-btn"
+                                buttonSize="sm"
+                                variant="none"
+                                action = {<MdEdit  />}
+                                title = 'Edit FlashCard'
+                                content = {<EditCard currentCollections={collections} 
+                                            card={card} 
+                                            collection={card.collection} 
+                                            card_question={card.card_question} 
+                                            card_answer={card.card_answer}
+                                            />}
+                                />
+                                <CardModal
+                                buttonStyle="card__delete-btn"
+                                buttonSize="sm"
+                                variant="none"
+                                action = {<ImCross />}
+                                title = 'Delete FlashCard'
+                                content = {<DeleteCard card={card} />}
+                                />
+                                </div>
                                 </div>
                             </div>
                         )
