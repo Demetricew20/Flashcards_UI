@@ -6,8 +6,12 @@ import { FormControl, FormLabel } from 'react-bootstrap';
 import DropdownItem from 'react-bootstrap/esm/DropdownItem';
 import FlashcardLibrary from '../../Services/request';
 
-const  AddCard = () => {
+const  AddCard = (props) => {
     const [collection, setCollection] = useState();
+    const[selectedCollection, setSelectedCollection] = useState({
+        id: null,
+        collectionName: ""
+    });
     const [card, setCard] = useState(
         {
             collection: "",
@@ -71,16 +75,28 @@ const  AddCard = () => {
     }
 
     const onChangeAnswer = (event) => {
+        
         setCard({
             ...card, card_answer: event.target.value
         });
     }
 
     const collectionSelect = (e) => {
+        let tempId = parseInt(e)
         setCard({
-            ...card, collection: parseInt(e)
+            ...card, collection: tempId
         })
-        console.log('Selected Collection >>>', card)
+        collection.forEach(item => {
+            if (item.id === tempId){
+                setSelectedCollection({
+                    id: tempId,
+                    collectionName: item.collection_name
+                })
+            }
+        });
+
+
+        console.log('Selected Collection >>>', e)
     }
 
     const newCard = () => {
@@ -123,7 +139,7 @@ const  AddCard = () => {
                         
                     </DropdownButton>
                 </Dropdown>
-                <input value={card.collection} readOnly/>
+                <input value={selectedCollection.collectionName} readOnly/>
                 </div>
     
                 <div className="form-group">

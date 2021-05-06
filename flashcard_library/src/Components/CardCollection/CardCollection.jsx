@@ -38,8 +38,6 @@ const getAllCollections = () => {
     })
 }
 
-
-
 const handleClickEventCard = () => {
     if (flip.clicked === false){
         setFlip({clicked: true})
@@ -95,10 +93,12 @@ const handleClick = (card) => {
                 <Row>
                     <Col>
                     {/* Needs Click function that flips card */}
+                    <div></div>
                     <div className="card__div">
                     {cards ? cards.map((card, i) => {
                         if(selectedCollection === undefined){
-                            return(                        
+                            return(
+                            <>                       
                             <div key={i} className="cards">
                                 
                                 <div className="card__item">
@@ -138,6 +138,7 @@ const handleClick = (card) => {
                                 </div>
                                 
                             </div>
+                            </>
                         )
                         }
                         if(selectedCollection === card.collection){
