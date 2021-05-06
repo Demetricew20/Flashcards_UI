@@ -2,12 +2,13 @@ import React, {useEffect, useState} from 'react';
 import FlashcardServices from '../../Services/request';
 import { Container, Col, Row, Button, DropdownButton, Dropdown } from 'react-bootstrap';
 import './CardCollection.css';
-import ReactCardFlip from 'react-card-flip'
+import AddCardModal from '../Modals/AddCardModal';
+import AddCard from './AddCard';
 
 const  CardCollections = (props) => {
 
-const [collections, setCollections] = useState(null);
-const [cards, setCards] = useState(null);
+const [collections, setCollections] = useState();
+const [cards, setCards] = useState();
 const [flip, setFlip] = useState({
     clicked : false
 })
@@ -15,9 +16,23 @@ const [selectedCollection, setSelectedCollection] = useState()
 
 
 useEffect(() => {
-    setCollections(props.collections)
-    setCards(props.cards)
-}, [setCollections, setCards])
+    getCards()
+    getAllCollections()
+}, [])
+
+const getCards = () => {
+        FlashcardServices.getAllFlashcards()
+        .then(response => {
+        setCards(response.data)
+        })
+    }
+
+const getAllCollections = () => {
+    FlashcardServices.getAllCollections()
+    .then(response => {
+    setCollections(response.data)
+    })
+}
 
 
 
@@ -38,7 +53,7 @@ const collectionSelect = (e) => {
 
     return (
         <div id="card-collections">
-            {console.log(collections)}
+            {console.log(cards)}
             <Container>
                 <Row >
                     <Col>
@@ -56,7 +71,14 @@ const collectionSelect = (e) => {
                 </Row>
                 <Row>
                     {/* Modal Needs to be added */}
-                    <Col><Button className="add__card-btn">Add New Card</Button></Col>
+                    <Col><AddCardModal
+                            buttonStyle="add__card-btn"
+                            action = 'Add Card'
+                            title = 'Add A New Flashcard'
+                            content = {<AddCard />}
+                            currentCollections = {collections}
+                        />
+                    </Col>
                 </Row>
                 <Row>
                     <Col>
@@ -82,7 +104,6 @@ const collectionSelect = (e) => {
                         )
                             
                         }
-
                     })
                     :
                         <div>No Collection selected</div>
