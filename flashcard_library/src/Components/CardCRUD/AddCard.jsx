@@ -57,15 +57,6 @@ const  AddCard = (props) => {
         newCard()
     }
 
-
-    //Detects changes 
-
-    // const onChangeCollection = (event) => {
-    //     setCard({
-    //         collection: event.target.value
-    //     });
-    // }
-
     const onChangeQuestion= (event) => {
         setCard({
             ...card, card_question: event.target.value

@@ -1,9 +1,6 @@
 import React, { Component, useState } from 'react';
-import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/button';
-import { FormGroup } from '@material-ui/core';
-import { FormControl, FormLabel } from 'react-bootstrap';
 
 const CardModal = (props) => {
 
