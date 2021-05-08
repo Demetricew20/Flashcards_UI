@@ -46,7 +46,7 @@ class  App extends Component {
     <div className="App">
       <Router>
       <NavbarPage/>
-      <Route path='/home'>
+      <Route exact path='/'>
         <Landing/>
       </Route>
       <Route path='/card-collections'>
