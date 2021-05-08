@@ -1,7 +1,6 @@
 import { Button } from 'react-bootstrap';
 import React, {useState} from 'react';
 import FlashcardServices from '../../Services/request';
-import './DeleteCard.css';
 
 const DeleteCard = (props) => {
     const [card, setCard] = useState();
