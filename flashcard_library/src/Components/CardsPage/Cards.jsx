@@ -21,6 +21,9 @@ const Cards = () => {
         id: null,
         collectionName: ""
     })
+    const [currentCard, setCurrentCard] = useState({
+        currentCard: 0
+    })
 
     useEffect(() => {
         getAllCollections()
@@ -64,8 +67,6 @@ const Cards = () => {
                 })
             }
         })
-    
-        mapCard();
     };
 
     const handleClickEventCard = () => {
@@ -82,32 +83,59 @@ const Cards = () => {
             })
         }
     }
-    
-    
-    function mapCard(){
-        let array = cards.cards;
-        let cardDeck = [];
-        if(array){
-            for (let i = 0; i < array.length; i++){
-                if(array[i].collection === selectedCollection.id){
-                    cardDeck.push(array[i])
-                }
-            }
-        }
 
-        console.log('CardDeck',cardDeck[0])
+    let cardDeck = [];
+
+    const mapCardDeck = () => {
+        cards.cards.forEach(card => {
+            if (card.collection === selectedCollection.id){
+                cardDeck.push(card)
+            }
+        })
+
+        if(cardDeck.length === 0){
+            return (<p className="card__text-individual">Choose a collection</p>)
+        }
+        else{
+            return (<p className="card__text-individual">{cardDeck[currentCard.currentCard].card_question}</p>)
+        }
+        
+
+    }
+    
+
+    const handleCardChangeRight = () => {
+        let count = currentCard.currentCard + 1
+        let max = cardDeck.length - 1
+        if(count <= max)
+        setCurrentCard({
+            currentCard: count
+        })
+        else{
+            setCurrentCard({
+                currentCard: 0
+            })
+        }
     }
 
-    function handleCardChange(){
-
+    const handleCardChangeLeft = () => {
+        let count = currentCard.currentCard - 1
+        let max = cardDeck.length - 1
+        if(currentCard.currentCard > 0)
+        setCurrentCard({
+            currentCard: count
+        })
+        else if (currentCard.currentCard === 0){
+            setCurrentCard({
+                currentCard: max
+            })
+        }
     }
 
 
     return (
         <div>
-            {/* {console.log(collections)}
-            {console.log(cards)}
-            {console.log(selectedCollection)} */}
+            
             <Container>
             <Row>
                 <Col><h2 className='collection__title'>{selectedCollection.collectionName}</h2></Col>
@@ -116,14 +144,15 @@ const Cards = () => {
                 <Col></Col>
                 <Col>
                 <div className="selected__card" id={`${selectedCollection.collectionName}-cards`}>
+                    {mapCardDeck()}
                 </div>
                 </Col>
                 <Col></Col>
             </Row>
             <Row>
-                <Col><RiArrowLeftSLine className='arrows'/></Col>
+                <Col><RiArrowLeftSLine className='arrows' onClick={handleCardChangeLeft}/></Col>
                 <Col><Button className='flip__btn'>Flip Card</Button></Col>
-                <Col><RiArrowRightSLine className='arrows'/></Col>
+                <Col><RiArrowRightSLine className='arrows' onClick={handleCardChangeRight}/></Col>
             </Row>
             <Row className="current__collection-row">
             <Col>
