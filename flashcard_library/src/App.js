@@ -41,8 +41,6 @@ class  App extends Component {
 
 
   render(){
-    console.log('**App State**')
-    console.log(this.state)
   return (
     
     <div className="App">

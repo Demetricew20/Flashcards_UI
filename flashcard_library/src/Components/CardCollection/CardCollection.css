@@ -80,12 +80,10 @@
     color: red;
     font-size: 1.25rem;
     padding: 0;
-}
-
-svg{
     stroke: black;
     stroke-width: .75px;
 }
+
 .flip__btn{
     margin-top: 2rem;
 }
