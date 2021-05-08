@@ -70,8 +70,6 @@ const collectionSelect = (e) => {
         }
         }
     )
-
-    console.log('Selected Collection >>>', e)
 }
 
 
@@ -169,7 +167,6 @@ let selectedCollectionCards = [];
                         }
                         if(selectedCollection.id === card.collection){
                             {selectedCollectionCards.push(card)}
-                            console.log(selectedCollection.name)
                             return(
                             <div key={i}   className="cards">
                                 <div className="card__item" id={`${selectedCollection.name}-cards`} >
@@ -219,8 +216,11 @@ let selectedCollectionCards = [];
                     </div>
                     </Col>
                 </Row>
-                <Row>{selectedCollection ? <Col><div><span>Total Cards: {selectedCollectionCards.length}</span></div></Col> : <Col><div><span>Total Cards: {allCollectionsCards.length}</span></div></Col> }
-                    
+                <Row>{!selectedCollection.id ?
+                <Col><div><span>Total Cards: {allCollectionsCards.length}</span></div></Col> 
+                :
+                <Col><div><span>Total Cards: {selectedCollectionCards.length}</span></div></Col> 
+                }
                 </Row>
                 <Row><Col><Button className={"flip__btn"} onClick={() => handleClickEventCard()}>Show Answers</Button></Col></Row>
 
