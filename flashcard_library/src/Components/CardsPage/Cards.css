@@ -15,13 +15,17 @@
     color: rgb(0, 0, 0);
 }
 
-.card__text-individual{
+.card__question-individual{
     align-self: center;
-    font-size: 1.75rem;
+    font-size: 1.55rem;
     margin: 0;
 }
 
-
+.card__answer-individual{
+    align-self: center;
+    font-size: 1.25rem;
+    margin: 0;
+}
 
 .arrows{
     margin-top: 2rem;

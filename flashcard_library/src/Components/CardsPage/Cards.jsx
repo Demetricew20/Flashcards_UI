@@ -14,7 +14,6 @@ const Cards = () => {
         {
             collection: null,
             cards: [],
-            isFlipped: false
         }
     );
     const [selectedCollection, setSelectedCollection] = useState({
@@ -22,7 +21,8 @@ const Cards = () => {
         collectionName: ""
     })
     const [currentCard, setCurrentCard] = useState({
-        currentCard: 0
+        currentCard: 0,
+        isFlipped: false
     })
 
     useEffect(() => {
@@ -69,19 +69,20 @@ const Cards = () => {
         })
     };
 
-    const handleClickEventCard = () => {
-        if (cards.isFlipped === false){
-            setCards({
-                ...cards,
+    const flipCard = () => {
+        if (currentCard.isFlipped === false){
+            setCurrentCard({
+                currentCard: currentCard.currentCard,
                 isFlipped: true
             })
         }
-        if (cards.isFlipped === true){
-            setCards({
-                ...cards,
+        if (currentCard.isFlipped === true){
+            setCurrentCard({
+                currentCard: currentCard.currentCard,
                 isFlipped: false
             })
         }
+        console.log(currentCard.isFlipped)
     }
 
     let cardDeck = [];
@@ -93,14 +94,18 @@ const Cards = () => {
             }
         })
 
+
         if(cardDeck.length === 0){
-            return (<p className="card__text-individual">Choose a collection</p>)
+            return (<p className="card__question-individual">Choose a collection</p>)
         }
         else{
-            return (<p className="card__text-individual">{cardDeck[currentCard.currentCard].card_question}</p>)
+            if(!currentCard.isFlipped){
+                return (<p className="card__question-individual">{cardDeck[currentCard.currentCard].card_question}</p>)
+            }
+            if(currentCard.isFlipped){
+                return (<p className="card__answer-individual">{cardDeck[currentCard.currentCard].card_answer}</p>)
+            }      
         }
-        
-
     }
     
 
@@ -109,10 +114,18 @@ const Cards = () => {
         let max = cardDeck.length - 1
         if(count <= max)
         setCurrentCard({
+            ...currentCard,
             currentCard: count
         })
+        else if(count > max){
+            setCurrentCard({
+                ...currentCard,
+                currentCard: 0
+            })
+        }
         else{
             setCurrentCard({
+                ...currentCard,
                 currentCard: 0
             })
         }
@@ -123,11 +136,19 @@ const Cards = () => {
         let max = cardDeck.length - 1
         if(currentCard.currentCard > 0)
         setCurrentCard({
+            ...currentCard,
             currentCard: count
         })
         else if (currentCard.currentCard === 0){
             setCurrentCard({
+                ...currentCard,
                 currentCard: max
+            })
+        }
+        else if(count > max){
+            setCurrentCard({
+                ...currentCard,
+                currentCard: 0
             })
         }
     }
@@ -135,7 +156,6 @@ const Cards = () => {
 
     return (
         <div>
-            
             <Container>
             <Row>
                 <Col><h2 className='collection__title'>{selectedCollection.collectionName}</h2></Col>
@@ -151,7 +171,7 @@ const Cards = () => {
             </Row>
             <Row>
                 <Col><RiArrowLeftSLine className='arrows' onClick={handleCardChangeLeft}/></Col>
-                <Col><Button className='flip__btn'>Flip Card</Button></Col>
+                <Col><Button className='flip__btn' onClick={flipCard}>Flip Card</Button></Col>
                 <Col><RiArrowRightSLine className='arrows' onClick={handleCardChangeRight}/></Col>
             </Row>
             <Row className="current__collection-row">

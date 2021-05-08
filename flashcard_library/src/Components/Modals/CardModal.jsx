@@ -25,7 +25,7 @@ const CardModal = (props) => {
                     {props.content}
                 </Modal.Body>
                 <Modal.Footer>
-                <button onClick={hideModal}>Cancel</button>
+                <Button variant='secondary' onClick={hideModal}>Cancel</Button>
                 </Modal.Footer>
             </Modal>
             </>

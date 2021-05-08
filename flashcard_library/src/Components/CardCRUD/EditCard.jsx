@@ -45,8 +45,8 @@ const EditCard = (props) => {
     
                 <div className="form-group">
                 <label htmlFor="card_question">Question</label>
-                <input
-                    type="text"
+                <textarea
+                    type="textarea"
                     className="form-control"
                     id="card_question"
                     placeholder={card.card_answer}
@@ -59,8 +59,8 @@ const EditCard = (props) => {
                 </div>
                 <div className="form-group">
                 <label htmlFor="card_answer">Answer</label>
-                <input
-                    type="text"
+                <textarea
+                    type="textarea"
                     className="form-control"
                     id="card_answer"
                     placeholder={card.card_question}
@@ -69,6 +69,7 @@ const EditCard = (props) => {
                     onChange={onChangeAnswer}
                     name="card_answer"
                 />
+
                 </div>
                 <button onClick={() => editCard(props.card)} className="btn btn-success">
                 Submit

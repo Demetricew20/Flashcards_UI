@@ -1,3 +1,4 @@
+import { Button } from 'react-bootstrap';
 import React, {useState} from 'react';
 import FlashcardServices from '../../Services/request';
 import './DeleteCard.css';
@@ -20,7 +21,7 @@ const DeleteCard = (props) => {
     return (
         <div>
             <p>Are you sure you want to delete this card?</p>
-            <button className="delete__btn" onClick={() => deleteCard(props.card)}>Delete</button>
+            <Button variant="danger" onClick={() => deleteCard(props.card)}>Delete</Button>
         </div>
     )
 }

@@ -108,7 +108,7 @@ const  AddCard = (props) => {
             </div>
             ) : (
             <div>
-                <div className="form-group">
+                <div className="form-group" style={{display: 'flex'}}>
                 <Dropdown>
                     <DropdownButton title="Select Collection">
                         {collection ? collection.map(item => (
@@ -128,13 +128,13 @@ const  AddCard = (props) => {
                         
                     </DropdownButton>
                 </Dropdown>
-                <input value={selectedCollection.collectionName} readOnly/>
+                <input style={{textAlign: 'center'}} value={selectedCollection.collectionName} readOnly/>
                 </div>
     
                 <div className="form-group">
                 <label htmlFor="card_question">Question</label>
-                <input
-                    type="text"
+                <textarea
+                    type="textarea"
                     className="form-control"
                     id="card_question"
                     required
@@ -146,8 +146,8 @@ const  AddCard = (props) => {
                 </div>
                 <div className="form-group">
                 <label htmlFor="card_answer">Answer</label>
-                <input
-                    type="text"
+                <textarea
+                    type="textarea"
                     className="form-control"
                     id="card_answer"
                     required
