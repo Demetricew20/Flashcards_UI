@@ -8,16 +8,20 @@ import CardCollections from './Components/CardCollection/CardCollection';
 import FlashcardServices from './Services/request'
 
 class  App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      collections: null,
+      cards: null
+    }
+  };
 
-  state = {
-    collections: null,
-    cards: null
-  }
+  
 
   async componentDidMount(){
-    this.getCards()
-    this.getAllCollections()
-  }
+    this.getCards();
+    this.getAllCollections();
+  };
 
   getCards(){
     FlashcardServices.getAllFlashcards()
@@ -26,7 +30,7 @@ class  App extends Component {
         cards: response.data
       })
     })
-  }
+  };
 
   getAllCollections(){
     FlashcardServices.getAllCollections()
@@ -35,7 +39,7 @@ class  App extends Component {
         collections: response.data
       })
     })
-  }
+  };
 
 
 

@@ -5,7 +5,7 @@ import DropdownItem from 'react-bootstrap/esm/DropdownItem';
 import FlashcardLibrary from '../../Services/request';
 
 const  AddCard = (props) => {
-    const [collection, setCollection] = useState();
+    const [collection, setCollection] = useState(props.collections);
     const[selectedCollection, setSelectedCollection] = useState({
         id: null,
         collectionName: ""
@@ -20,18 +20,8 @@ const  AddCard = (props) => {
     );
 
     useEffect(() => {
-        getCollections()
-        setCollection(collection)
         
-    }, [setCollection])
-
-    async function getCollections(){
-        await FlashcardLibrary.getAllCollections()
-        .then(response => {
-            console.log(response)
-            setCollection(response.data)
-        })
-    }
+    }, [props])
 
     const createCard = () => {
         const data = {
@@ -48,7 +38,7 @@ const  AddCard = (props) => {
                 card_answer: data.card_answer,
                 submitted: true
             })
-            setCollection(...collection)
+            setCollection(...collection, collection)
         })
         .catch(error => {
             console.log(error.response.data)

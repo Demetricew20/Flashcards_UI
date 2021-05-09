@@ -3,8 +3,6 @@ import React, {useState} from 'react';
 import FlashcardServices from '../../Services/request';
 
 const DeleteCard = (props) => {
-    const [card, setCard] = useState();
-
     const deleteCard = (card) => {
         FlashcardServices.deleteFlashcard(card.id, card.collection)
         .then(response => {
@@ -13,7 +11,8 @@ const DeleteCard = (props) => {
         .catch(error => {
             console.log(error.response)
         })
-        setCard(card)
+
+        window.location.reload();
     }
 
 

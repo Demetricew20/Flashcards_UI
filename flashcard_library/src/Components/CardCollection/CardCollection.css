@@ -2,8 +2,16 @@
     margin-top: 2rem;
 }
 
+.dropdown__btn > button{
+    margin-bottom: 2rem;
+    background-color: #3670DA;
+    color: white;
+}
+
 .add__card-btn{
     margin-top: 1rem;
+    background-color: #3670DA;
+    color: white;
 }
 
 .card__div{
@@ -26,7 +34,6 @@
 .card__item{
     z-index: 2;
     display: grid;
-    grid-template-columns: 1 1fr;
     height: 100%;
     border: 3px solid purple;
     border-radius: 3%;
@@ -72,7 +79,7 @@
 
 .card__edit-btn{
     margin-right: 2.75rem;
-    color: #007BFF;
+    color: #3670DA;
     font-size: 1.55rem;
     padding: 0;
 }
@@ -86,4 +93,5 @@
 
 .flip__btn{
     margin-top: 2rem;
+    background-color:#3670DA;
 }

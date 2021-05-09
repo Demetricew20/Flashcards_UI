@@ -12,6 +12,7 @@ const CardModal = (props) => {
     
     const hideModal = () => {
         setIsOpen(false);
+        window.location.reload();
     }
 
     return (

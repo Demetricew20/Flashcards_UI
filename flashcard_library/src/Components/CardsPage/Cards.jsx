@@ -25,6 +25,8 @@ const Cards = () => {
         isFlipped: false
     })
 
+
+    //Having trouble passing props
     useEffect(() => {
         getAllCollections()
         getCards()
@@ -171,13 +173,13 @@ const Cards = () => {
             </Row>
             <Row>
                 <Col><RiArrowLeftSLine className='arrows' onClick={handleCardChangeLeft}/></Col>
-                <Col><Button className='flip__btn' onClick={flipCard}>Flip Card</Button></Col>
+                <Col><Button className='flip__btn' id="flip" onClick={flipCard}>Flip Card</Button></Col>
                 <Col><RiArrowRightSLine className='arrows' onClick={handleCardChangeRight}/></Col>
             </Row>
             <Row className="current__collection-row">
             <Col>
             <Dropdown>
-                    <DropdownButton title="Select Collection">
+                    <DropdownButton className="dropdown__btn" title="Select Collection">
                         {collections.collection ? collections.collection.map(item => (
                             <DropdownItem 
                             key={item.id} 
@@ -210,5 +212,6 @@ const Cards = () => {
         </div>
     )
 }
+
 
 export default Cards

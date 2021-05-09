@@ -14,6 +14,7 @@
     align-content: center;
     background-color: #C9C4C9;
     color: rgb(0, 0, 0);
+    transition: 5s;
 }
 
 .card__question-individual{
@@ -33,9 +34,6 @@
     font-size: 4rem;
 }
 
-.flip__btn{
-    margin-top: 2rem;
-}
 
 .card__deck{
     height: 23vh;

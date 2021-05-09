@@ -10,7 +10,7 @@ const  AddCollection = (props) => {
     useEffect(() => {
         setCollection(collection)
         
-    }, [setCollection])
+    }, [collection])
 
     const createCollection = () => {
         const data = {

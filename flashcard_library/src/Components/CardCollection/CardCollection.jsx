@@ -10,6 +10,7 @@ import DeleteCard from '../CardCRUD/DeleteCard';
 import EditCard from '../CardCRUD/EditCard';
 import AddCollection from '../CollectionCRUD/AddCollection';
 import DropdownItem from 'react-bootstrap/esm/DropdownItem';
+import PropTypes from 'prop-types';
 
 const  CardCollections = (props) => {
 
@@ -23,25 +24,15 @@ const [selectedCollection, setSelectedCollection] = useState({
     name: ''
 })
 
+useEffect(() => {
+    setCollections(props.collections)
+    setCards(props.cards)
+}, [props, props.collections, props.cards])
 
 useEffect(() => {
-    getCards()
-    getAllCollections()
-}, [])
+    console.log("updated!")
+}, [cards, collections])
 
-const getCards = () => {
-        FlashcardServices.getAllFlashcards()
-        .then(response => {
-        setCards(response.data)
-        })
-    }
-
-const getAllCollections = () => {
-    FlashcardServices.getAllCollections()
-    .then(response => {
-    setCollections(response.data)
-    })
-}
 
 const handleClickEventCard = () => {
     if (flip.clicked === false){
@@ -78,11 +69,12 @@ let selectedCollectionCards = [];
 
     return (
         <div id="card-collections">
+            {console.log(cards)}
             <Container>
                 <Row >
                     <Col>
                         <Dropdown className="select__collections" >
-                            <DropdownButton title="Select Card Collection"  >
+                            <DropdownButton className="dropdown__btn" title="Select Card Collection"  >
                                 <DropdownItem eventKey={undefined} onSelect={collectionSelect}>Show All</DropdownItem>
                             {collections ? collections.map(collection => (
                                 <Dropdown.Item key={collection.id} 
@@ -105,7 +97,7 @@ let selectedCollectionCards = [];
                             buttonStyle="add__card-btn"
                             action = 'Add Card'
                             title = 'Add A New Flashcard'
-                            content = {<AddCard />}
+                            content = {<AddCard collections={props.collections} />}
                         />
                     </Col>
                     <Col><CardModal
@@ -216,13 +208,13 @@ let selectedCollectionCards = [];
                     </div>
                     </Col>
                 </Row>
-                <Row>{!selectedCollection.id ?
+                <Row style={{color: 'white', position: 'relative', top: '20px'}}>{!selectedCollection.id ?
                 <Col><div><span>Total Cards: {allCollectionsCards.length}</span></div></Col> 
                 :
                 <Col><div><span>Total Cards: {selectedCollectionCards.length}</span></div></Col> 
                 }
                 </Row>
-                <Row><Col><Button className={"flip__btn"} onClick={() => handleClickEventCard()}>Show Answers</Button></Col></Row>
+                <Row><Col><Button className="flip__btn" onClick={() => handleClickEventCard()}>Show Answers</Button></Col></Row>
 
             </Container>
         </div>

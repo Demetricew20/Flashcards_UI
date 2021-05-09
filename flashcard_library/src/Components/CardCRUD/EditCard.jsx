@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import FlashcardServices from '../../Services/request';
 
 const EditCard = (props) => {
@@ -8,6 +8,10 @@ const EditCard = (props) => {
         card_answer: props.card_answer
     });
     const [collection, setCollection] = useState(props.currentCollections);
+
+    useEffect(() => {
+        
+    }, [card, collection])
     
     const editCard = (currentCard) => {
         const data = {
@@ -17,12 +21,18 @@ const EditCard = (props) => {
         }
         FlashcardServices.updateFlashcard(currentCard.id, currentCard.collection, data)
         .then(response => {
-            setCard(data)
+            setCard({
+                collection: data.collection,
+                card_question: data.card_question,
+                card_answer: data.card_answer
+            })
             console.log(response)
         })
         .catch(error => {
             console.log(error.response)
         })
+
+        window.location.reload();
     }
 
     const onChangeQuestion= (event) => {
