@@ -45,7 +45,7 @@ async function getAllFlashcards(){
         setCards(response.data)
     })
 };
-  
+
 async function getAllCollections() {
     await FlashcardServices.getAllCollections()
     .then(response => {
