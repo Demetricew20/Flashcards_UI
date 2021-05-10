@@ -9,16 +9,16 @@ const EditCard = (props) => {
     });
 
     useEffect(() => {
-        
-    }, [card])
+    }, [card, props])
+
     
-    const editCard = (currentCard) => {
+    async function editCard(currentCard){
         const data = {
             collection: card.collection,
             card_question: card.card_question,
             card_answer: card.card_answer
         }
-        FlashcardServices.updateFlashcard(currentCard.id, currentCard.collection, data)
+        await FlashcardServices.updateFlashcard(currentCard.id, currentCard.collection, data)
         .then(response => {
             setCard({
                 collection: data.collection,
@@ -30,8 +30,7 @@ const EditCard = (props) => {
         .catch(error => {
             console.log(error.response)
         })
-
-        window.location.reload();
+        props.action(card)
     }
 
     const onChangeQuestion= (event) => {
@@ -51,7 +50,7 @@ const EditCard = (props) => {
     return (
         <div>
             <div>
-    
+            {console.log(card)}
                 <div className="form-group">
                 <label htmlFor="card_question">Question</label>
                 <textarea

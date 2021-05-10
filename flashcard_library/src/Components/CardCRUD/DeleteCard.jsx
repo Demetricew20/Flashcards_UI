@@ -1,18 +1,21 @@
 import { Button } from 'react-bootstrap';
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import FlashcardServices from '../../Services/request';
+import { array } from 'prop-types';
 
 const DeleteCard = (props) => {
-    const deleteCard = (card) => {
-        FlashcardServices.deleteFlashcard(card.id, card.collection)
+
+    async function deleteCard(card){
+        await FlashcardServices.deleteFlashcard(card.id, card.collection)
         .then(response => {
-            console.log(response); 
+            console.log(response);
+            
         })
         .catch(error => {
             console.log(error.response)
         })
 
-        window.location.reload();
+        props.action(card)
     }
 
 

@@ -110,7 +110,6 @@ const Cards = () => {
             }   
         }
     }
-    
 
     const handleCardChangeRight = () => {
         let count = currentCard.currentCard + 1

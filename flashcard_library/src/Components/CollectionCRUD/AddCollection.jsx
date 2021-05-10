@@ -9,7 +9,6 @@ const  AddCollection = (props) => {
 
     useEffect(() => {
         setCollection(collection)
-        
     }, [collection])
 
     const createCollection = () => {
@@ -27,8 +26,8 @@ const  AddCollection = (props) => {
         .catch(error => {
             console.log(error.response)
         })
-        
-        newCollection()
+
+        props.action(collection)
     }
 
 

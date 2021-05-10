@@ -21,30 +21,29 @@ const  AddCard = (props) => {
 
     useEffect(() => {
         
-    }, [props])
+    }, [props, card])
 
-    const createCard = () => {
+    async function createCard(){
         const data = {
             collection: card.collection,
             card_question: card.card_question,
             card_answer: card.card_answer,
         }
-        FlashcardLibrary.createFlashcard(data)
-        .then(data => {
-            console.log(data)
+        await FlashcardLibrary.createFlashcard(data)
+        .then(response => {
+            console.log(response.data)
             setCard({
                 collection: data.collection,
                 card_question: data.card_question,
                 card_answer: data.card_answer,
                 submitted: true
             })
-            setCollection(...collection, collection)
         })
         .catch(error => {
             console.log(error.response.data)
         })
+        props.action(card)
         
-        newCard()
     }
 
     const onChangeQuestion= (event) => {
@@ -76,6 +75,10 @@ const  AddCard = (props) => {
     }
 
     const newCard = () => {
+        setSelectedCollection({
+            id: null,
+            collectionName: ''
+        })
         setCard({
             collection: "",
             card_question:"",

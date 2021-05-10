@@ -11,10 +11,15 @@ import EditCard from '../CardCRUD/EditCard';
 import AddCollection from '../CollectionCRUD/AddCollection';
 import DropdownItem from 'react-bootstrap/esm/DropdownItem';
 
-const  CardCollections = (props) => {
+const  CardCollections = () => {
 
 const [collections, setCollections] = useState();
 const [cards, setCards] = useState();
+const [card, setCard] = useState({
+    collection: null,
+    card_question: '',
+    card_answer: ''
+})
 const [flip, setFlip] = useState({
     clicked : false
 })
@@ -24,27 +29,58 @@ const [selectedCollection, setSelectedCollection] = useState({
 })
 
 useEffect(() => {
-    getCards();
     getAllCollections();
-}, [])
+}, [card, cards])
 
 useEffect(() => {
-}, [cards, collections])
+    getAllFlashcards();
+}, [card])
+useEffect(() => {
+    
+}, [collections])
 
-
-const getCards = () => {
-    FlashcardServices.getAllFlashcards()
+async function getAllFlashcards(){
+    await FlashcardServices.getAllFlashcards()
     .then(response => {
         setCards(response.data)
     })
 };
-
-const getAllCollections = () => {
-    FlashcardServices.getAllCollections()
+  
+async function getAllCollections() {
+    await FlashcardServices.getAllCollections()
     .then(response => {
         setCollections(response.data)
     })
 };
+
+const handleAddCard = (value) => {
+    let array = [...cards]
+    array.push(value)
+    setCards(array)
+}
+
+const handleAddCollection = (value) => {
+    let array = [...collections]
+    array.push(value)
+    setCollections(array)
+}
+
+const handleEdit = (value) => {
+    setCard({
+        collection: value.collection,
+        card_question: value.card_question,
+        card_answer: value.card_answer
+    })
+}
+
+const handleDelete = (value) => {
+    let array = [...cards]
+    let index = array.indexOf(value)
+    if( index !== -1){
+        array.splice(index, 1);
+    }
+    setCards(array)
+}
 
 
 const handleClickEventCard = () => {
@@ -109,14 +145,14 @@ let selectedCollectionCards = [];
                             buttonStyle="add__card-btn"
                             action = 'Add Card'
                             title = 'Add A New Flashcard'
-                            content = {<AddCard collections={collections} />}
+                            content = {<AddCard collections={collections} action={handleAddCard} />}
                         />
                     </Col>
                     <Col><CardModal
                             buttonStyle="add__card-btn"
                             action = 'Add Collection'
                             title = 'Add A New Collection'
-                            content = {<AddCollection />}
+                            content = {<AddCollection action={handleAddCollection} />}
                         />
                     </Col>
                 </Row>
@@ -142,7 +178,8 @@ let selectedCollectionCards = [];
                                 variant="none"
                                 action = {<MdEdit />}
                                 title = 'Edit FlashCard'
-                                content = {<EditCard currentCollections={collections} 
+                                content = {<EditCard
+                                            action={handleEdit}
                                             card={card} 
                                             collection={card.collection} 
                                             card_question={card.card_question} 
@@ -155,7 +192,7 @@ let selectedCollectionCards = [];
                                 variant="none"
                                 action = {<ImCross />}
                                 title = 'Delete FlashCard'
-                                content = {<DeleteCard card={card} />}
+                                content = {<DeleteCard card={card} cards={cards} action={handleDelete} />}
                                 />
                                 </div>
                             
@@ -185,7 +222,8 @@ let selectedCollectionCards = [];
                                 variant="none"
                                 action = {<MdEdit  />}
                                 title = 'Edit FlashCard'
-                                content = {<EditCard currentCollections={collections} 
+                                content = {<EditCard 
+                                            action={handleEdit}
                                             card={card} 
                                             collection={card.collection} 
                                             card_question={card.card_question} 
@@ -198,7 +236,7 @@ let selectedCollectionCards = [];
                                 variant="none"
                                 action = {<ImCross />}
                                 title = 'Delete FlashCard'
-                                content = {<DeleteCard card={card} />}
+                                content = {<DeleteCard cards={cards} action={handleDelete} />}
                                 />
                                 </div>
                             

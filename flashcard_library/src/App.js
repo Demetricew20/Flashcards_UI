@@ -5,10 +5,11 @@ import NavbarPage from './Components/Navbar/NavBar';
 import Landing from './Components/LandingPage/Landing';
 import Cards from './Components/CardsPage/Cards';
 import CardCollections from './Components/CardCollection/CardCollection';
+import FlashcardServices from './Services/request';
 
-class  App extends Component {
+const App = () => {
 
-  render(){
+
   return (
     
     <div className="App">
@@ -18,7 +19,7 @@ class  App extends Component {
         <Landing/>
       </Route>
       <Route path='/card-collections'>
-        <CardCollections/>
+        <CardCollections />
       </Route>
       <Route path='/cards'>
         <Cards/>
@@ -27,7 +28,6 @@ class  App extends Component {
       
     </div>
   );
-    }
 }
 
 export default App;
