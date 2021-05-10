@@ -50,7 +50,6 @@ const EditCard = (props) => {
     return (
         <div>
             <div>
-            {console.log(card)}
                 <div className="form-group">
                 <label htmlFor="card_question">Question</label>
                 <textarea

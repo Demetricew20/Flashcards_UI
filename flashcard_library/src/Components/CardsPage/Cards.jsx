@@ -2,7 +2,8 @@ import { Container, Row, Col, Button, Dropdown, DropdownButton } from 'react-boo
 import DropdownItem from 'react-bootstrap/esm/DropdownItem';
 import {RiArrowLeftSLine, RiArrowRightSLine} from 'react-icons/ri'
 import {FaJava} from 'react-icons/fa';
-import {SiPython, SiHtml5, SiReact} from 'react-icons/si';
+import {BiGhost} from 'react-icons/bi'
+import {SiPython, SiHtml5, SiReact, } from 'react-icons/si';
 import React, {useState, useEffect} from 'react';
 import FlashcardServices from '../../Services/request';
 import './Cards.css';
@@ -20,10 +21,12 @@ const Cards = () => {
     );
     const [selectedCollection, setSelectedCollection] = useState({
         id: null,
-        collectionName: ""
+        collectionName: "",
+        length: null
     })
     const [currentCard, setCurrentCard] = useState({
         currentCard: 0,
+        totalCards: 0,
         isFlipped: false
     })
 
@@ -91,22 +94,23 @@ const Cards = () => {
     let cardDeck = [];
 
     const mapCardDeck = () => {
-        cards.cards.forEach(card => {
+        cards.cards.forEach((card, i) => {
             if (card.collection === selectedCollection.id){
                 cardDeck.push(card)
             }
         })
 
+        let count = currentCard.currentCard + 1;
 
         if(cardDeck.length === 0){
             return (<p className="card__question-individual">Choose a collection</p>)
         }
         else{
             if(!currentCard.isFlipped){
-                return (<p className="card__question-individual">{cardDeck[currentCard.currentCard].card_question}</p>)
+                return (<div><span>{count}/{cardDeck.length}</span><p className="card__question-individual">{cardDeck[currentCard.currentCard].card_question}</p></div>)
             }
             if(currentCard.isFlipped){
-                return (<p className="card__answer-individual">{cardDeck[currentCard.currentCard].card_answer}</p>)
+                return (<div><span>{count}/{cardDeck.length}</span><p className="card__answer-individual">{cardDeck[currentCard.currentCard].card_answer}</p></div>)
             }   
         }
     }
@@ -163,18 +167,13 @@ const Cards = () => {
                 <Col><h2 className='collection__title'>{selectedCollection.collectionName}</h2></Col>
             </Row>
             <Row>
-                <Col></Col>
-                <Col>
-                <div className="selected__card" id={`${selectedCollection.collectionName}-cards`}>
+                <Col xs={3} style={{padding: '0'}}><RiArrowLeftSLine className='arrows' onClick={handleCardChangeLeft}/></Col>
+                <Col xs={6} style={{padding: '0', display:'flex',justifyContent: 'center'}}>
+                <div className="selected__card" id={`${selectedCollection.collectionName}-cards`} onClick={flipCard}>
                     {mapCardDeck()}
                 </div>
-                </Col>
-                <Col></Col>
-            </Row>
-            <Row>
-                <Col><RiArrowLeftSLine className='arrows' onClick={handleCardChangeLeft}/></Col>
-                <Col><Button className='flip__btn' id="flip" onClick={flipCard}>Flip Card</Button></Col>
-                <Col><RiArrowRightSLine className='arrows' onClick={handleCardChangeRight}/></Col>
+                </Col >
+                <Col xs={3} style={{padding: '0'}}><RiArrowRightSLine className='arrows' onClick={handleCardChangeRight}/></Col>
             </Row>
             <Row className="current__collection-row">
             <Col>
@@ -203,19 +202,22 @@ const Cards = () => {
                 <Col>
                     <div className='card__deck' >
                         <div className='card1' id={`${selectedCollection.collectionName}-cardDeck`}>
+                            {!selectedCollection.collectionName ? <box-icon name='ghost' type="solid" animation='fade-up' color="green" size="lg" pull="left" ></box-icon>: <> </>  }
                             {selectedCollection.collectionName === 'Java' ? <FaJava /> : <></>  }
                             {selectedCollection.collectionName === 'Python' ? <SiPython /> : <></>  }
                             {selectedCollection.collectionName === 'HTML5' ? <SiHtml5 /> : <></>  }
                             {selectedCollection.collectionName === 'React' ? <SiReact /> : <></>  }
                         </div>
                         <div className='card2' id={`${selectedCollection.collectionName}-cardDeck`}>
-                        {selectedCollection.collectionName === 'Java' ? <FaJava /> : <></>  }
+                            {!selectedCollection.collectionName ? <box-icon name='ghost' type="solid" animation='fade-up' color="blue" size="lg" pull="left" ></box-icon>: <> </>  }
+                            {selectedCollection.collectionName === 'Java' ? <FaJava /> : <></>  }
                             {selectedCollection.collectionName === 'Python' ? <SiPython /> : <></>  }
                             {selectedCollection.collectionName === 'HTML5' ? <SiHtml5 /> : <></>  }
                             {selectedCollection.collectionName === 'React' ? <SiReact /> : <></>  }
                         </div>
                         <div className='card3' id={`${selectedCollection.collectionName}-cardDeck`}>
-                        {selectedCollection.collectionName === 'Java' ? <FaJava /> : <></>  }
+                            {!selectedCollection.collectionName ? <box-icon name='ghost' type="solid" animation='fade-up' color="red" size="lg" pull="left" ></box-icon>: <> </>  }
+                            {selectedCollection.collectionName === 'Java' ? <FaJava /> : <></>  }
                             {selectedCollection.collectionName === 'Python' ? <SiPython /> : <></>  }
                             {selectedCollection.collectionName === 'HTML5' ? <SiHtml5 /> : <></>  }
                             {selectedCollection.collectionName === 'React' ? <SiReact /> : <></>  }

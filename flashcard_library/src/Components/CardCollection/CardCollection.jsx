@@ -157,8 +157,7 @@ let selectedCollectionCards = [];
                     </Col>
                 </Row>
                 <Row>
-                    <Col>
-                    {/* Needs Click function that flips card */}
+                    <Col style={{display:'flex',justifyContent:'center'}}>
                     <div className="card__div">
                     {cards ? cards.map((card, i) => {
                         {allCollectionsCards.push(card)}

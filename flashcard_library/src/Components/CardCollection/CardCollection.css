@@ -19,6 +19,7 @@
     width: 100%;
     display: grid;
     grid-template-columns: 175px 175px;
+    justify-content: center;
 }
 
 .cards{
