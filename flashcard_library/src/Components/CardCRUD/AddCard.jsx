@@ -73,9 +73,6 @@ const  AddCard = (props) => {
                 })
             }
         });
-
-
-        console.log('Selected Collection >>>', e)
     }
 
     const newCard = () => {

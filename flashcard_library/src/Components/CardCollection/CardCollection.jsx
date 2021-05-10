@@ -10,7 +10,6 @@ import DeleteCard from '../CardCRUD/DeleteCard';
 import EditCard from '../CardCRUD/EditCard';
 import AddCollection from '../CollectionCRUD/AddCollection';
 import DropdownItem from 'react-bootstrap/esm/DropdownItem';
-import PropTypes from 'prop-types';
 
 const  CardCollections = (props) => {
 
@@ -25,13 +24,27 @@ const [selectedCollection, setSelectedCollection] = useState({
 })
 
 useEffect(() => {
-    setCollections(props.collections)
-    setCards(props.cards)
-}, [props, props.collections, props.cards])
+    getCards();
+    getAllCollections();
+}, [])
 
 useEffect(() => {
-    console.log("updated!")
 }, [cards, collections])
+
+
+const getCards = () => {
+    FlashcardServices.getAllFlashcards()
+    .then(response => {
+        setCards(response.data)
+    })
+};
+
+const getAllCollections = () => {
+    FlashcardServices.getAllCollections()
+    .then(response => {
+        setCollections(response.data)
+    })
+};
 
 
 const handleClickEventCard = () => {
@@ -69,7 +82,6 @@ let selectedCollectionCards = [];
 
     return (
         <div id="card-collections">
-            {console.log(cards)}
             <Container>
                 <Row >
                     <Col>
@@ -97,7 +109,7 @@ let selectedCollectionCards = [];
                             buttonStyle="add__card-btn"
                             action = 'Add Card'
                             title = 'Add A New Flashcard'
-                            content = {<AddCard collections={props.collections} />}
+                            content = {<AddCard collections={collections} />}
                         />
                     </Col>
                     <Col><CardModal

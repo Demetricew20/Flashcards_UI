@@ -1,6 +1,8 @@
 import { Container, Row, Col, Button, Dropdown, DropdownButton } from 'react-bootstrap';
 import DropdownItem from 'react-bootstrap/esm/DropdownItem';
 import {RiArrowLeftSLine, RiArrowRightSLine} from 'react-icons/ri'
+import {FaJava} from 'react-icons/fa';
+import {SiPython, SiHtml5, SiReact} from 'react-icons/si';
 import React, {useState, useEffect} from 'react';
 import FlashcardServices from '../../Services/request';
 import './Cards.css';
@@ -72,19 +74,18 @@ const Cards = () => {
     };
 
     const flipCard = () => {
-        if (currentCard.isFlipped === false){
+        if (currentCard.isFlipped === false && selectedCollection.id){
             setCurrentCard({
                 currentCard: currentCard.currentCard,
                 isFlipped: true
             })
         }
-        if (currentCard.isFlipped === true){
+        if (currentCard.isFlipped === true && selectedCollection.id){
             setCurrentCard({
                 currentCard: currentCard.currentCard,
                 isFlipped: false
             })
         }
-        console.log(currentCard.isFlipped)
     }
 
     let cardDeck = [];
@@ -106,7 +107,7 @@ const Cards = () => {
             }
             if(currentCard.isFlipped){
                 return (<p className="card__answer-individual">{cardDeck[currentCard.currentCard].card_answer}</p>)
-            }      
+            }   
         }
     }
     
@@ -202,9 +203,24 @@ const Cards = () => {
             <Row>
                 <Col>
                     <div className='card__deck' >
-                        <div className='card1' id={`${selectedCollection.collectionName}-cards`}></div>
-                        <div className='card2' id={`${selectedCollection.collectionName}-cards`}></div>
-                        <div className='card3' id={`${selectedCollection.collectionName}-cards`}></div>
+                        <div className='card1' id={`${selectedCollection.collectionName}-cardDeck`}>
+                            {selectedCollection.collectionName === 'Java' ? <FaJava /> : <></>  }
+                            {selectedCollection.collectionName === 'Python' ? <SiPython /> : <></>  }
+                            {selectedCollection.collectionName === 'HTML5' ? <SiHtml5 /> : <></>  }
+                            {selectedCollection.collectionName === 'React' ? <SiReact /> : <></>  }
+                        </div>
+                        <div className='card2' id={`${selectedCollection.collectionName}-cardDeck`}>
+                        {selectedCollection.collectionName === 'Java' ? <FaJava /> : <></>  }
+                            {selectedCollection.collectionName === 'Python' ? <SiPython /> : <></>  }
+                            {selectedCollection.collectionName === 'HTML5' ? <SiHtml5 /> : <></>  }
+                            {selectedCollection.collectionName === 'React' ? <SiReact /> : <></>  }
+                        </div>
+                        <div className='card3' id={`${selectedCollection.collectionName}-cardDeck`}>
+                        {selectedCollection.collectionName === 'Java' ? <FaJava /> : <></>  }
+                            {selectedCollection.collectionName === 'Python' ? <SiPython /> : <></>  }
+                            {selectedCollection.collectionName === 'HTML5' ? <SiHtml5 /> : <></>  }
+                            {selectedCollection.collectionName === 'React' ? <SiReact /> : <></>  }
+                        </div>
                     </div>
                 </Col>
             </Row>

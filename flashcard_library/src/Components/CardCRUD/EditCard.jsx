@@ -7,11 +7,10 @@ const EditCard = (props) => {
         card_question: props.card_question,
         card_answer: props.card_answer
     });
-    const [collection, setCollection] = useState(props.currentCollections);
 
     useEffect(() => {
         
-    }, [card, collection])
+    }, [card])
     
     const editCard = (currentCard) => {
         const data = {

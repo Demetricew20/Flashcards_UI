@@ -44,20 +44,21 @@
 }
 
 #Java-cards {
-    border: 3px solid blue;
+    border: 5px solid #5f9bc0;
 }
 
-#Python-cards {
-    border: 3px solid yellow;
+#Python-cards{
+    border: 3px solid #F7C738;
 }
 
-#React-cards {
-    border: 4px solid rgb(15, 167, 218);
+#React-cards{
+    border: 4px solid #5ED3F3;
 }
 
-#HTML5-cards {
+#HTML5-cards{
     border: 3px solid orangered;
 }
+
 
 .card__text{
     z-index: 3;
