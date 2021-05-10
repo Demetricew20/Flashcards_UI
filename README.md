@@ -1,19 +1,18 @@
-# Flashcards_UI
-Project - Flashcard App
+# Project - Flashcard App
 
 ## Django REST API repository
   <a href="https://github.com/Demetricew20/FlashcardApp_database">View Repository</a>
 
 ## Task
 Build a flashcard app that will help students study words and definitions of various technologies. 
----
+
 ## Technologies used
 ### - React.js
 ### - Python
 ### - Django
 ### - MySQL
 ### - REST API
----
+
 ## Initial Wireframe concepts
 ### Mobile Version
    ![Screenshot 2021-05-10 154502](https://user-images.githubusercontent.com/76887873/117737756-036c0e00-b1a7-11eb-9899-b46196d2bb11.jpg)
