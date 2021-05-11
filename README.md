@@ -23,4 +23,9 @@ Build a flashcard app that will help students study words and definitions of var
 ### Entity Relationship Diagram
    ![ERD_flashcards](https://user-images.githubusercontent.com/76887873/117738162-dbc97580-b1a7-11eb-8f90-20eded6a77bc.jpg)
 
-
+## Captures
+### Mobile
+  ![Screenshot 2021-05-10 160315](https://user-images.githubusercontent.com/76887873/117739120-1502e500-b1aa-11eb-9d16-d0ecf6f6c33d.jpg)
+  ![Screenshot 2021-05-10 160844](https://user-images.githubusercontent.com/76887873/117739139-25b35b00-b1aa-11eb-8106-69b247ff89af.jpg)
+### Desktop
+  ![Screenshot 2021-05-10 160736](https://user-images.githubusercontent.com/76887873/117739148-2815b500-b1aa-11eb-8ec9-1591844bbfb8.jpg)
