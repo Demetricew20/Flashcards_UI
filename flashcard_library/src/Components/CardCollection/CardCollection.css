@@ -96,3 +96,10 @@
     margin-top: 2rem;
     background-color:#3670DA;
 }
+
+
+@media only screen and (min-width: 768px) {
+    .card__div{
+        grid-template-columns: 175px 175px 175px 175px;
+    }
+}
